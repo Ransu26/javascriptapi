@@ -11,9 +11,6 @@ student2.firstname = "L";
 student2.lastname = "Lawliet";
 student2.email = "l@lawliet.com";
 
-addStudentAPI(student1);
-addStudentAPI(student2);
-
 export const getStudentsAPI = () => {
     return mockStudentDb;
 }
@@ -27,6 +24,9 @@ export const addStudentAPI = (newStudentData) => {
     mockStudentDb.push(savedStudent);
     return savedStudent;
 }
+
+addStudentAPI(student1);
+addStudentAPI(student2);
 let student3 = new Object();
 student3.firstname = "V";
 student3.lastname = "Vawliet";
