@@ -14,11 +14,11 @@ student2.email = "l@lawliet.com";
 addStudentAPI(student1);
 addStudentAPI(student2);
 
-export function getStudentsAPI(){
+export const getStudentsAPI = () => {
     return mockStudentDb;
 }
 
-export function addStudentAPI(newStudentData){
+export const addStudentAPI = (newStudentData) => {
     let savedStudent = new Object();
     savedStudent.id = Date.now();
     savedStudent.firstname = newStudentData.firstname;
