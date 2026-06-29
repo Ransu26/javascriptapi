@@ -8,22 +8,6 @@ let studentFname = document.querySelector("#firstName");
 let studentLname = document.querySelector("#lastName");
 let email = document.getElementById("email")
 
-// const forbiddenCharacters = /[0-9!@#$%^&*()_+=\[\]{};:"\\|<>\/?]/u;
-
-// function validateName(input) {
-//     if (forbiddenCharacters.test(input)) {
-//         console.log("Validated test")
-//         return false;
-//     }
-
-//     if(input.trim() === "") {
-//         console.log("Validated test2")
-//         return false;
-//     }
-//     console.log("Validated test3")
-//     return true;
-// }
-
 const rederTable = (dataArray) => {
     studentBody.innerHTML = "";
     if (dataArray.length === 0) {
@@ -39,32 +23,6 @@ const rederTable = (dataArray) => {
         </tr>`;
     }); 
 };
-
-// studentFname.addEventListener("blur", (event) => {
-//     if (forbiddenCharacters.test(studentFname.value)) {
-//         console.log("Validated test");
-//         studentFname.setCustomValidity("Name is invalid.");
-//         studentFname.reportValidity();
-//     }
-
-//     if(studentLname.value.trim() === "") {
-//         console.log("Validated test2")
-//         studentFname.reportValidity();
-//     }
-// });
-
-// studentLname.addEventListener("blur", (event) => {
-//     if (forbiddenCharacters.test(studentLname.value)) {
-//         console.log("Validated test");
-//         studentLname.setCustomValidity("LastName is invalid.");
-//         studentLname.reportValidity();
-//     }
-
-//     if(studentLname.value.trim() === "") {
-//         console.log("Validated test2")
-//         studentLname.reportValidity();
-//     }
-// });
 
 studentForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -84,6 +42,12 @@ studentForm.addEventListener("submit", (event) => {
         lastname: studentLname.value,
         email: email.value
     };
+    let checkIfExist = locatStudent.some(student =>
+        JSON.stringify(student) === JSON.stringify(studentData));
+    if(checkIfExist){
+        alert("This user already exists.");
+        return;
+    }
     console.log("New Student Data: ", studentData);
     console.log(locatStudent);
     addStudentAPI(studentData);
